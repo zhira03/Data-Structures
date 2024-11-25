@@ -57,7 +57,7 @@ class HashMap:
                 return True
             
     def print(self):
-        print('----In-Use----')
+        print('--------------------------------IN USE--------------------------------')
         for item in self.map:
             if item is not None:
                 print(str(item))
@@ -74,6 +74,6 @@ myHash.add('NaleliJoey@gmail.com','Takudzwa Zhira')
 
 print(myHash.get_by_value("Takudzwa Zhira"))
 
-#myHash.delete('Taku')
+myHash.print()
 
 #myHash.print()
