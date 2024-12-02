@@ -27,15 +27,18 @@ class LinkedList:
         self.head = new_node
 
     def delete(self,data):
-        while self.head != None:
-            if self.head == data:
-                self.head = self.head.next
+        # Special case: if the head contains the target data
+        if self.head and self.head.data == data:
+            self.head = self.head.next  # Remove the head node
+            return
+        
+        # Traverse the list to find the node to delete
+        current_node = self.head
+        while current_node and current_node.next:
+            if current_node.next.data == data:  # Found the target node
+                current_node.next = current_node.next.next  # Remove it
                 return
-            current_node = self.head
-            while current_node.next and current_node.next.data != data:
-                current_node = current_node.next
-            if current_node.next:
-                current_node.next = current_node.next.next
+            current_node = current_node.next
 
     def show(self):
         elements = []
@@ -43,7 +46,18 @@ class LinkedList:
         while current_node.next != None:
             current_node = current_node.next
             elements.append(current_node.data)
-        print (elements)
+        return elements
+
+    def get(self,index):
+        if index >= self.length():
+            print("Index out of Bounds")
+            return None
+        current_index = 0
+        current_node = self.head
+        while current_node != None:
+            current_node = current_node.next
+            if current_index == index : return current_node.data
+            current_index += 1
 
     def length(self):
         current_node = self.head
@@ -62,5 +76,7 @@ for number in numbers:
     linked1.append(number)
 
 linked1.show()
+print(linked1.length())
 linked1.delete(5)
 linked1.show()
+print(linked1.length())
