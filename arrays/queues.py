@@ -3,7 +3,7 @@ FIFO= first in first out
 """
 
 from collections import deque
-from stacks import Empty
+from Stacks.stacks import Empty
 
 class ArrayQueue:
     """using an Array as the Queue base """

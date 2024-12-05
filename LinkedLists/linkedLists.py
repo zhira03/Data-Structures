@@ -1,4 +1,4 @@
-from stacks import Empty
+from Stacks.stacks import Empty
 
 """
 starting with the easy singly list
@@ -14,7 +14,7 @@ class LinkedList:
     def __init__(self):
         self.head = Node()
 
-    def append(self,data): #adds new noodes to the end of the list
+    def append(self,data): #adds new nodes to the end of the list
         new_node =  Node(data)
         current_node = self.head
         while current_node.next != None:
@@ -70,13 +70,11 @@ class LinkedList:
 
 linked1 = LinkedList()
 
-numbers = [1,2.3,4,5,6,7,8,9,10,11]
+numbers = [1,2,3,4,5,6,7,8,9,10,11]
 
 for number in numbers:
     linked1.append(number)
 
-linked1.show()
-print(linked1.length())
+print(f'Initial LinkedList: {linked1.show()}')
 linked1.delete(5)
-linked1.show()
-print(linked1.length())
+print(f'Final LinkedList: {linked1.get(8)}')

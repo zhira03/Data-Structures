@@ -8,18 +8,22 @@ class Stack():
     """using a List as the stack base """
     def __init__(self):
         self.stack = list()
+
     def push(self,item):
         self.stack.append(item)
+
     def pop(self):
         if len(self.stack) != 0:
             self.stack.pop()
         else:
             return "List is Empty"
+        
     def peek(self):
         if len(self.stack) != 0:
             return self.stack[len(self.stack)-1]
         else:
             return "List is Empty"
+        
     def __str__(self):
         return str(self.stack)
     
