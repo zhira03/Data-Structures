@@ -58,6 +58,16 @@ class CircularQueue:
         if self.size > 0:
             self.tail = self.tail.next
 
+    def __str__(self):
+        if self.is_empty():
+            return "CircularQueue: []"
+        result = []
+        current = self.tail.next
+        for _ in range(self.size):
+            result.append(current.data)
+            current = current.next  
+        return f"CircularQueue: {result}"
+
 
 
 
