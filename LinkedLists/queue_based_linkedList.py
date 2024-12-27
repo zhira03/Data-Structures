@@ -28,7 +28,7 @@ class QueueLinkedList:
         self.size += 1
 
     def prepend(self, data): #for priority adds
-        """ i didnt take care of the tail tho. it might cause some issues later"""
+        """ i didn't take care of the tail tho. it might cause some issues later"""
         new_entry = Node(data,None)
         if self.is_empty():
             self.head = new_entry
