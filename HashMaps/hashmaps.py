@@ -141,3 +141,7 @@ class HashMap(BaseMap):
 
     def is_empty(self):
         return len(self.table) == 0
+    
+    def __str__(self):
+            items = ', '.join(f'{key}: {value}' for key, value in self.table.items())
+            return f'{{{items}}}'
