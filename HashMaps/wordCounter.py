@@ -18,7 +18,8 @@ def word_counter(text):
         print(f"File {text} not found.")
         return None
     
-    return word_map.__str__()
+    while word_map.is_empty() == False:
+        return word_map.__str__()
 
 word_map = word_counter("C:\\Users\\HomePC\\Documents\\randoms.txt")
 print(word_map)
