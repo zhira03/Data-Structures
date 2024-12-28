@@ -5,7 +5,11 @@ class Empty(Exception):
     pass
 
 class BaseMap(ABC):
-
+    """
+    Abstract Base Class for a Map ADT
+    All the methods are abstract and must be used by the subclass 
+    so for now im just defining the ones im wanting to use
+    """
     @abstractmethod
     def __len__(self):
         pass
@@ -69,5 +73,5 @@ class HashMap(BaseMap):
         return len(self.table) == 0
     
     def __str__(self):
-            items = ', '.join(f'{key}: {value}' for key, value in self.table.items())
+            items = '\n '.join(f'{key}: {value}' for key, value in sorted(self.table.items()))
             return f'{{{items}}}'
