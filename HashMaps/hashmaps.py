@@ -11,10 +11,6 @@ class BaseMap(ABC):
         pass
 
     @abstractmethod
-    def __contains__(self, key):
-        pass
-
-    @abstractmethod
     def __getitem__(self, key):
         pass
 
@@ -29,82 +25,12 @@ class BaseMap(ABC):
     @abstractmethod
     def __iter__(self):
         pass
-
-    @abstractmethod
-    def keys(self):
-        pass
-
-    @abstractmethod
-    def values(self):
-        pass
-
-    @abstractmethod
-    def items(self):
-        pass
-
-    @abstractmethod
-    def get(self, key, default=None):
-        pass
-
-    @abstractmethod
-    def pop(self, key, default=None):
-        pass
-
-    @abstractmethod
-    def popitem(self):
-        pass
-
-    @abstractmethod
-    def clear(self):
-        pass
-
-    @abstractmethod
-    def update(self, other):
-        pass
-
-    @abstractmethod
-    def setdefault(self, key, default=None):
-        pass
-
-    @abstractmethod
-    def copy(self):
-        pass
-
-    @abstractmethod
-    def __eq__(self, other):
-        pass
-
-    @abstractmethod
-    def __ne__(self, other):
-        pass
-
-    @abstractmethod
-    def __repr__(self):
-        pass
-
     @abstractmethod
     def __str__(self):
         pass
 
-    @abstractmethod
-    def __bool__(self):
-        pass
 
-    @abstractmethod
-    def __hash__(self):
-        pass
 
-    @abstractmethod
-    def __reversed__(self):
-        pass
-
-    @abstractmethod
-    def size(self):
-        pass
-
-    @abstractmethod
-    def is_empty(self):
-        pass
 
 class HashMap(BaseMap):
     class _Item:
