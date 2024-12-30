@@ -71,13 +71,10 @@ class HashMap(BaseMap):
     def __getitem__(self, key):
         """
         Retrieve the value associated with the given key from the hash map.
-
         Parameters:
         key (any): The key to look up in the hash map.
-
         Returns:
         any: The value associated with the given key.
-
         Raises:
         KeyError: If the key is not found in the hash map.
         """
@@ -85,12 +82,8 @@ class HashMap(BaseMap):
             return self.table[key]
         raise KeyError(f'Key Error {repr(key)}')
     
-    def __setitem__(self, key, value):#can be used to add or update a value/key pair
-        
-        if key in self.table:
-            self.table[key] = value
-        else:
-            self.table[key] = value
+    def __setitem__(self, key, value):  # can be used to add or update a value/key pair
+        self.table[key] = value
         
     def __delitem__(self, key):
         if key in self.table:  # if we find a value in the table with this Key
