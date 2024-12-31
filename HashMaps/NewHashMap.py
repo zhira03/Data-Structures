@@ -110,5 +110,39 @@ class NewHashMap(BaseMap):
                     self._size -= 1
                     return
         raise KeyError(f"KeyError: {key} not found")
+    
+    def __len__(self):
+        return self._size
+    
+    def __iter__(self):
+        for slot in self._table:
+            if slot:
+                for item in slot:
+                    yield item.key
+
+    def contains(self, key):
+        if self[key]:
+            return True
+        return False
+    
+    def __str__(self):
+        return f"{self._table}"
+    
+    def __popitem__(self, key):
+        index = self.hash(key)
+        slot = self._table[index]
+
+        if slot:
+            for element in slot:
+                if element.key == key:
+                    slot.remove(element)
+                    return element.value, element.key
+        raise KeyError(f"KeyError: {key} not found")
+    
+    def clear(self):
+        self._table = [None] * self.capacity
+        self._size = 0
+        return f"Table Cleared Successfully: {self._table}"
+                    
         
     
