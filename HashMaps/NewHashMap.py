@@ -63,4 +63,52 @@ class NewHashMap(BaseMap):
     def hash(self, key):
         return hash(key) % self.capacity
     
+    def __getitem__(self, key):
+        root = self.hash(key)
+        item = self._table[root]
+        if item:
+            for element in item:
+                if element.key == key:
+                    return element.value
+        raise KeyError(f"KeyError: {key} not found")
+    
+    def __setitem__(self, key, value):
+        while self._size/self.capacity < 0.35:
+            index = self.hash(key)
+            if self._table[index] is None:
+                self._table[index] = []
+
+            for element in self._table[index]:
+                if element.key == key:
+                    element.value = value
+                    return
+            
+            self._table[index].append(self._Item(key, value))
+            self._size += 1
+        else:
+            self.resize()
+    
+    def resize(self):
+        currentMap = self._table
+
+        self.capacity *= 2
+        self._table = [None] * self.capacity
+        self._size = 0
+
+        for slot in currentMap:
+            if slot:
+                for element in slot:
+                    self[element.key] =  element.value
+
+    def __delitem__(self, key):
+        index = self.hash(key)
+        slot = self._table[index]
+        if slot:
+            for item in slot:
+                if item.key == key:
+                    slot.remove(item)
+                    self._size -= 1
+                    return
+        raise KeyError(f"KeyError: {key} not found")
+        
     

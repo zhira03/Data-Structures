@@ -65,6 +65,9 @@ class HashMap(BaseMap):
             self.key = key
             self.value = value
 
+        def __repr__(self):
+            return f"Item({self.key}, {self.value})"
+
     def __init__(self):
         self.table = {}
     
