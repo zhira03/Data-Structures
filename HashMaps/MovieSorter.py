@@ -9,15 +9,14 @@ movieBank = mapper.NewHashMap()
 def home():
     return render_template('index.html')    
 
-@app.route('/add', methods=['POST'])
+@app.route('/add', methods=['POST', 'GET'])
 def add_movie():
     if request.method == "POST":
         title = request.form['title']
-
         if title:
             movieBank[title] = "Stored"
             return redirect(url_for('listed_movies'))
-        return redirect(url_for('add_movie.html'))
+    return redirect(url_for('add_movie'))
     
 @app.route('/list')
 def listed_movies():
@@ -34,7 +33,7 @@ def search_movie():
             result = f"'{title}' is in the collection."
         else:
             result = f"'{title}' is not in the collection."
-    return render_template('search_movie.html', result=result)
+    return render_template('search_movie', result=result)
 
 @app.route('/delete', methods=['POST'])
 def delete_movie():

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Movie Library </title>
+
+</head>
+<body>
+    <h1>Current Movie Library</h1>
+    <ul>
+        {% for movie in movies %}
+            <li>{{ movie.title }} ({{ movie.year }}) - {{ movie.director }} - Rating: {{ movie.rating }}</li>
+        {% endfor %}
+    </ul>
+    <a href ='/HashMaps/templates/index.html'>Back to Main Menu</a>
+</body>
+</html>
