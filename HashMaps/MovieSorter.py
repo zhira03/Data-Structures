@@ -14,9 +14,10 @@ def add_movie():
     if request.method == "POST":
         title = request.form['title']
         if title:
+            # "Stored" signifies that the movie title has been successfully added to the movieBank
             movieBank[title] = "Stored"
             return redirect(url_for('listed_movies'))
-    return redirect(url_for('add_movie'))
+    return render_template('add_movie.html', error="Title is required.")
     
 @app.route('/list')
 def listed_movies():
