@@ -9,10 +9,14 @@
 <body>
     <h1>Current Movie Library</h1>
     <ul>
-        {% while movieBank != is_empty():
-        for movie in movies %}
-            <li>{{ movie.title }} ({{ movie.year }}) - {{ movie.director }} - Rating: {{ movie.rating }}</li>
-        {% endfor %}
+        {%for title, info in movieBank.items()%}
+            <li>
+                <strong>{{title}}</strong> <br>
+                Director: {{info['director']}} <br>
+                Year: {{info['year']}} <br>
+                Rating: {{info['rating']}}
+            </li>
+        {%endfor%}
     </ul>
     <a href ='/'>Back to Main Menu</a>
 </body>

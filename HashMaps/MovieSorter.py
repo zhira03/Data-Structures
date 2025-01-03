@@ -13,15 +13,23 @@ def home():
 def add_movie():
     if request.method == "POST":
         title = request.form['title']
-        if title:
+        director = request.form['director']
+        year = request.form['year']
+        rating = request.form['rating']
+
+        if title and year and rating and director:
             # "Stored" signifies that the movie title has been successfully added to the movieBank
-            movieBank[title] = "Stored"
+            movieBank[title] = {
+                'director': director,
+                'year': int(year),
+                'rating': int(rating)
+            }
             return redirect(url_for('listed_movies'))
     return render_template('add_movie.html', error="Title is required.")
     
 @app.route('/list')
 def listed_movies():
-    movie_list = list(movieBank)
+    movie_list = {key: movieBank[key] for key in movieBank}
     return render_template('listed_movies.html', movieBank=movie_list)
 
 @app.route("/search", methods=["POST", "GET"])
