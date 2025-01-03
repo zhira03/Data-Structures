@@ -60,6 +60,49 @@ def listed_movies():
     print("Current Movie Bank:  ",movie_list)
     return render_template('listed_movies.html', movieBank=movie_list)
 
+@app.route('/update', methods=['POST', 'GET'])
+def update_movie():
+    result = None
+
+    if request.method == "POST":
+        title = request.form.get('title')
+        director = request.form.get('director')
+        year = request.form.get('year')
+        rating = request.form.get('rating')
+
+        if all([title, director, year, rating]):
+            try:
+                if movieBank.contains(title):
+                    movie = movieBank[title]
+
+                    if new_director := director:
+                        movie['director'] = new_director
+
+                    if new_year := year:
+                        try:
+                            new_year = int(new_year)
+                            movie['year'] = new_year
+                        except ValueError:
+                            return render_template('update_movie.html', error="Year must be an integer.")
+                        
+                    if new_rating := rating:
+                        try:
+                            new_rating = int(new_rating)
+                            movie['rating'] = new_rating
+                        except ValueError:  
+                            return render_template('update_movie.html', error="Rating must be an integer.")
+                    
+                    movieBank[title] = movie
+                    result = f"'{title}' has been updated."
+
+            except KeyError:
+                result = f"'{title}' is not in the collection."
+
+        else:
+            result = "All fields are required."
+    
+    return render_template('update_movie.html', result=result)
+
 @app.route("/search", methods=["POST", "GET"])
 def search_movie():
     result = None

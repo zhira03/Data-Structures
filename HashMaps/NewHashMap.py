@@ -79,9 +79,9 @@ class NewHashMap(BaseMap):
                 self._table[index] = []
 
             for element in self._table[index]:
-                if element.key == key:
-                    element.value = value
-                    return
+                if element.key == key: #checks if the key is already in the hashmap
+                    element.value = value #updates the value of the key
+                    return #returns the value
             
             self._table[index].append(self._Item(key, value))
             self._size += 1
