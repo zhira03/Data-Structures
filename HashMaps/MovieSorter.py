@@ -66,29 +66,27 @@ def update_movie():
 
     if request.method == "POST":
         title = request.form.get('title')
-        director = request.form.get('director')
-        year = request.form.get('year')
-        rating = request.form.get('rating')
+        new_director = request.form.get('director')
+        new_year = request.form.get('year')
+        new_rating = request.form.get('rating')
 
-        if all([title, director, year, rating]):
+        if all(title):
             try:
                 if movieBank.contains(title):
                     movie = movieBank[title]
 
-                    if new_director := director:
+                    if new_director:
                         movie['director'] = new_director
 
-                    if new_year := year:
+                    if new_year:
                         try:
-                            new_year = int(new_year)
-                            movie['year'] = new_year
+                            movie['year'] = int(new_year)
                         except ValueError:
                             return render_template('update_movie.html', error="Year must be an integer.")
                         
-                    if new_rating := rating:
+                    if new_rating:
                         try:
-                            new_rating = int(new_rating)
-                            movie['rating'] = new_rating
+                            movie['rating'] = int(new_rating)
                         except ValueError:  
                             return render_template('update_movie.html', error="Rating must be an integer.")
                     
