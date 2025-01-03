@@ -146,7 +146,6 @@ class NewHashMap(BaseMap):
     
     def to_dict(self):#to convert the hashmap to a dictionary for use in the movie app
         result = {}
-
         for key in self:
             result[key] = self[key]
         return result

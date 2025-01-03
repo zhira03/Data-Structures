@@ -9,17 +9,20 @@ movieBank = mapper.NewHashMap()
 
 def load_movieBank():
     try:
-        with open('movieBankMovies.json', 'r') as file:
+        with open("movieBankMovies.json", "r") as file:
             info = json.load(file)
+            print("Movie Data:", info)
             movieBank.from_dict(info)
     except FileNotFoundError:
+        print("No movie data found.")
         pass
 
 load_movieBank()
 
 def save_movieBank():
-    with open('movieBankMovies.json', 'w') as file:
+    with open("movieBankMovies.json", "w") as file:
         json.dump(movieBank.to_dict(), file)
+        movieBank.__repr__()
 
 atexit.register(save_movieBank)
 
@@ -54,6 +57,7 @@ def add_movie():
 @app.route('/list')
 def listed_movies():
     movie_list = movieBank.to_dict()
+    print("Current Movie Bank:  ",movie_list)
     return render_template('listed_movies.html', movieBank=movie_list)
 
 @app.route("/search", methods=["POST", "GET"])
