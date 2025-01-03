@@ -9,7 +9,8 @@
 <body>
     <h1>Current Movie Library</h1>
     <ul>
-        {% for movie in movies %}
+        {% while movieBank != is_empty():
+        for movie in movies %}
             <li>{{ movie.title }} ({{ movie.year }}) - {{ movie.director }} - Rating: {{ movie.rating }}</li>
         {% endfor %}
     </ul>
