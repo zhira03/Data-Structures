@@ -28,13 +28,13 @@ def listed_movies():
 def search_movie():
     result = None
 
-    while request.method == "POST":
+    if request.method == "POST":
         title = request.form['title']
         if title and movieBank.contains(title):
             result = f"'{title}' is in the collection."
         else:
             result = f"'{title}' is not in the collection."
-    return render_template('search_movie', result=result)
+    return render_template('search_movie.html', result=result)
 
 @app.route('/delete', methods=['POST'])
 def delete_movie():
