@@ -1,9 +1,30 @@
 from flask import Flask, request, jsonify, render_template,redirect,url_for
 import NewHashMap as mapper
+import json
+import atexit
+
 
 app = Flask(__name__)
 
 movieBank = mapper.NewHashMap()
+
+def load_movieBank():
+    try:
+        with open('movieBankMovies.json', 'r') as file:
+            info = json.load(file)
+            movieBank.from_dict(info)
+    except FileNotFoundError:
+        pass
+
+load_movieBank()
+
+def save_movieBank():
+    with open('movieBankMovies.json', 'w') as file:
+        json.dump(movieBank.to_dict(), file)
+
+
+atexit.register(save_movieBank)
+
 
 @app.route('/')
 def home():

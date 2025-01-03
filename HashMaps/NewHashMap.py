@@ -143,6 +143,17 @@ class NewHashMap(BaseMap):
         self._table = [None] * self.capacity
         self._size = 0
         return f"Table Cleared Successfully: {self._table}"
+    
+    def to_dict(self):#to convert the hashmap to a dictionary for use in the movie app
+        result = {}
+
+        for key in self:
+            result[key] = self[key]
+        return result
+    
+    def from_dict(self, info):#to convert a dictionary to a hashmap for use in the movie app
+        for key, value in info.items():
+            self[key] = value
                     
         
     
