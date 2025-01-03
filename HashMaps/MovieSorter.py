@@ -63,7 +63,10 @@ def listed_movies():
 @app.route('/update', methods=['POST', 'GET'])
 def update_movie():
     result = None
-
+    """
+    This function updates a movie in the collection.but its not working as expected cz of the post/get method
+    will have to fix it later
+    """
     if request.method == "POST":
         title = request.form.get('title')
         new_director = request.form.get('director')
