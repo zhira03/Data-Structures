@@ -1,0 +1,74 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+h1 {
+    color: #2c3e50;
+    margin: 20px 0;
+}
+
+/* Flex Container for Movies */
+.movie-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* Movie Card Styling */
+.movie-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    width: 250px; /* Ensure consistent width */
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+}
+
+.movie-details {
+    padding: 10px;
+}
+
+.movie-details strong {
+    font-size: 1.2em;
+    color: #3498db;
+}
+
+.movie-details p {
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Back to Menu Link */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    align-self: center;
+    margin-bottom: 20px; /* Add margin to the bottom */
+}
+
+a:hover {
+    color: #1abc9c;
+}

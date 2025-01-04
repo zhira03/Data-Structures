@@ -145,5 +145,5 @@ def delete_movie():
 
 if __name__ == "__main__":
     import os
-    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() in ['true', '1', 't']
+    debug_mode = os.getenv('FLASK_DEBUG', 'True').lower() in ['true', '1', 't']
     app.run(debug=debug_mode)
