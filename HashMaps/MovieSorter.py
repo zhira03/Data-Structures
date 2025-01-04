@@ -67,7 +67,7 @@ def update_movie():
     This function updates a movie in the collection.but its not working as expected cz of the post/get method
     will have to fix it later
     """
-    if request.method == "POST":
+    if request.method == "post":
         title = request.form.get('title')
         new_director = request.form.get('director')
         new_year = request.form.get('year')
