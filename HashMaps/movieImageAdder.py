@@ -10,13 +10,16 @@ def add_image_to_Title(movieBankPath, imageURLs):
 
         url_index = 0
 
+        default_image_url = "https://preview.redd.it/the-poster-for-dune-2-is-a-reference-to-the-fact-that-some-v0-5d1g5aceja8c1.jpeg?width=1080&crop=smart&auto=webp&s=dc87b9046e239aadba31e6adf17e16c0750cd3fa"
+        
         for movieTitle in movieInfo:
             if not checkImageKey(movieInfo, movieTitle):
                 if url_index < len(imageURLs):
                     movieInfo[movieTitle]["image"] = imageURLs[url_index]
                     url_index += 1
                 else:
-                    print("Not enough URLs to add to all movies.")
+                    movieInfo[movieTitle]["image"] = default_image_url
+                    print(f"Assigned default image to {movieTitle} due to insufficient URLs.")
         
         with open(movieBankPath, "w") as file:
             json.dump(movieInfo, file, indent=4)

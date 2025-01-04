@@ -20,7 +20,7 @@ def load_movieBank():
     try:
         with open(movieBankPath, "r") as file:
             info = json.load(file)
-            print("Movie Data:", info)
+            #print("Movie Data:", info)
             movieBank.from_dict(info)
     except FileNotFoundError:
         print("No movie data found.")
@@ -31,7 +31,7 @@ load_movieBank()
 def save_movieBank():
     with open(movieBankPath, "w") as file:
         json.dump(movieBank.to_dict(), file)
-        movieBank.__repr__()
+        #movieBank.__repr__()
 
 atexit.register(save_movieBank)
 
@@ -43,7 +43,7 @@ def home():
 def add_movie():
     if request.method == "POST":
         title = request.form.get('title')
-        print("Title: ", title)
+        #print("Title: ", title)
         director = request.form.get('director')
         year = request.form.get('year')
         rating = request.form.get('rating')
@@ -67,7 +67,7 @@ def add_movie():
 @app.route('/list')
 def listed_movies():
     movie_list = movieBank.to_dict()
-    print("Current Movie Bank:  ",movie_list)
+    #print("Current Movie Bank:  ",movie_list)
     return render_template('listed_movies.html', movieBank=movie_list)
 
 @app.route('/update', methods=['POST', 'GET'])
