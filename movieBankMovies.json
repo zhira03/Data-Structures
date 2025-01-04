@@ -1,1 +1,20 @@
-{"The Hulk": {"director": "Marvel", "year": 2011, "rating": 5}, "Ironman 3": {"director": "Marvel", "year": 2015, "rating": 5}, "The SandMan": {"director": "DC Comics", "year": 2021, "rating": 6}}
+{
+    "The SandMan": {
+        "director": "DC Comics",
+        "year": 2021,
+        "rating": 6,
+        "image": "https://i.ebayimg.com/images/g/akAAAOSwOgdYuw2h/s-l1600.webp"
+    },
+    "Ironman 3": {
+        "director": "Marvel",
+        "year": 2015,
+        "rating": 5,
+        "image": "https://media.themoviedb.org/t/p/w440_and_h660_face/vfJ1nBnqiiRWZWv3ZvtFWO5zccg.jpg"
+    },
+    "The Hulk": {
+        "director": "Marvel",
+        "year": 2011,
+        "rating": 5,
+        "image": "https://i.ebayimg.com/images/g/negAAOSwT2ZiIkf1/s-l1600.webp"
+    }
+}

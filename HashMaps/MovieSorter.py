@@ -2,25 +2,34 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for
 import NewHashMap as mapper
 import json
 import atexit
+from movieImageAdder import add_image_to_Title
 
 app = Flask(__name__)
 
 movieBank = mapper.NewHashMap()
+imageURLs = [
+    "https://i.ebayimg.com/images/g/akAAAOSwOgdYuw2h/s-l1600.webp",
+    "https://media.themoviedb.org/t/p/w440_and_h660_face/vfJ1nBnqiiRWZWv3ZvtFWO5zccg.jpg",
+    "https://i.ebayimg.com/images/g/negAAOSwT2ZiIkf1/s-l1600.webp"
+]
+movieBankPath = "movieBankMovies.json"
+
+add_image_to_Title(movieBankPath, imageURLs)
 
 def load_movieBank():
     try:
-        with open("movieBankMovies.json", "r") as file:
+        with open(movieBankPath, "r") as file:
             info = json.load(file)
             print("Movie Data:", info)
             movieBank.from_dict(info)
     except FileNotFoundError:
         print("No movie data found.")
-        pass
 
 load_movieBank()
 
+
 def save_movieBank():
-    with open("movieBankMovies.json", "w") as file:
+    with open(movieBankPath, "w") as file:
         json.dump(movieBank.to_dict(), file)
         movieBank.__repr__()
 
@@ -34,6 +43,7 @@ def home():
 def add_movie():
     if request.method == "POST":
         title = request.form.get('title')
+        print("Title: ", title)
         director = request.form.get('director')
         year = request.form.get('year')
         rating = request.form.get('rating')

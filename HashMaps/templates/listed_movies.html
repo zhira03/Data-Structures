@@ -3,21 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Current Movie Library </title>
+    <title>Current Movie Library</title>
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
 
+        h1 {
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+
+        /* Grid Container for Movies */
+        .movie-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .movie-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .movie-details {
+            padding: 10px;
+        }
+
+        .movie-details strong {
+            font-size: 1.2em;
+            color: #3498db;
+        }
+
+        .movie-details p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        /* Back to Menu Link */
+        a {
+            display: inline-block;
+            margin: 20px 0;
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #1abc9c;
+        }
+    </style>
 </head>
 <body>
     <h1>Current Movie Library</h1>
-    <ul>
-        {%for title, info in movieBank.items()%}
-            <li>
-                <strong>{{title}}</strong> <br>
-                Director: {{info['director']}} <br>
-                Year: {{info['year']}} <br>
-                Rating: {{info['rating']}}
-            </li>
-        {%endfor%}
-    </ul>
-    <a href ='/'>Back to Main Menu</a>
+    <div class="movie-container">
+        {% for title, info in movieBank.items() %}
+        <div class="movie-card">
+            <img src="{{info['image']}}" alt="{{title}} Movie Poster">
+            <div class="movie-details">
+                <strong>{{title}}</strong>
+                <p>Director: {{info['director']}}</p>
+                <p>Year: {{info['year']}}</p>
+                <p>Rating: {{info['rating']}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href='/'>Back to Main Menu</a>
 </body>
 </html>
